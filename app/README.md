@@ -15,7 +15,7 @@ ex) create-book frontend ハンズオンNode.js
 bin以下にファイルを追加。先頭に`#!/usr/bin/env node`を書く。
 作成後に
 ```
-    npm link
+npm link
 ```
 
 ## 仕様

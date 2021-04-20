@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "新しいジャンルディレクトリを作成する `make gen [ジャンル名]`",
+  "description": "",
   "main": "index.js",
   "bin": {
     "create-genre": "bin/createGenre.js",

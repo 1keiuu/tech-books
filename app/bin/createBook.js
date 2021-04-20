@@ -2,15 +2,9 @@
 
 const { generateBooksJson } = require("./utils/file");
 
-const checkAndDeleteDir = (dirPath) => {
-  const isDirExist = fs.existsSync(dirPath);
-  if (isDirExist) {
-    fs.rmdirSync(dirPath);
-  }
-};
-
 const dirName = process.argv[2];
 const bookTitle = process.argv[3];
+
 if (!dirName && !bookTitle) {
   throw Error(
     "Exit: Expected more than 2 arguments. dirName is first, bookTitle is second"
@@ -25,16 +19,19 @@ if (!bookTitle) {
 
 const fs = require("fs");
 
-const baseDirPath = "../data/books/";
+const baseDirPath = "data/books/";
 const dirPath = `${baseDirPath}${dirName}`;
-
 const isDirExist = fs.existsSync(dirPath);
 
 if (!isDirExist) {
   // create directory
-  fs.mkdirSync(dirPath);
+  fs.mkdirSync(dirPath, { recursive: true });
+  fs.writeFileSync(
+    `${dirPath}/settings.json`,
+    JSON.stringify({ name: dirName, "name-en": "未設定" }, null, 2)
+  );
   fs.writeFileSync(`${dirPath}/books.json`, JSON.stringify([]));
-  console.log(`directory '${dirName}' is created.`);
+  console.log(`genre '${dirName}' is successfully created`);
 }
 
 const books = fs.readFileSync(`${dirPath}/books.json`);
