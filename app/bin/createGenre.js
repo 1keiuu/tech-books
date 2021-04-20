@@ -1,17 +1,6 @@
 #!/usr/bin/env node
 
-const generateJsonFile = (fileName, dirNameJP, dirPath) => {
-  const data = {
-    name: fileName,
-    "name-jp": dirNameJP,
-  };
-  try {
-    fs.writeFileSync(`${dirPath}/settings.json`, JSON.stringify(data, null, 2));
-  } catch (e) {
-    throw Error(e);
-  }
-};
-
+const { generateSettingsJson, generateBooksJson } = require("./utils/file");
 const checkAndDeleteDir = (dirPath) => {
   const isDirExist = fs.existsSync(dirPath);
   if (isDirExist) {
@@ -46,7 +35,11 @@ if (isDirExist) {
 
 try {
   fs.mkdirSync(dirPath);
-  generateJsonFile(dirName, dirNameJP, dirPath);
+  fs.writeFileSync(
+    `${dirPath}/settings.json`,
+    generateSettingsJson(dirName, dirNameJP)
+  );
+  fs.writeFileSync(`${dirPath}/books.json`, generateBooksJson());
 
   console.log(`genre '${dirName}' is successfully created.`);
 } catch (e) {

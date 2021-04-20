@@ -1,8 +1,14 @@
 ## コマンド
-新しいジャンルディレクトリを作成する
-`make gen [ジャンル名(英)] []`
+- 新しいジャンルディレクトリを追加する
+`create-genre [ジャンル名(英)] [ジャンル名(日)]`
 ```
-ex) npm run genre frontend フロントエンド
+ex) create-genre frontend フロントエンド
+```
+
+- 新しい本を追加する
+`create-book [ジャンル名(英)] [本のタイトル]`
+```
+ex) create-book frontend ハンズオンNode.js
 ```
 
 ## 新しいコマンドを追加する時
