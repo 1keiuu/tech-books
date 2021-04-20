@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "新しいジャンルディレクトリを作成する `make gen [ジャンル名]`",
+  "main": "index.js",
+  "bin": {
+    "app": "generate-genre.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen": "node bin/generate-genre.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

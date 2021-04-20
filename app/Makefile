@@ -1,0 +1,4 @@
+gen:
+	
+a:
+	echo "oo";
