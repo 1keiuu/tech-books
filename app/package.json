@@ -4,11 +4,12 @@
   "description": "新しいジャンルディレクトリを作成する `make gen [ジャンル名]`",
   "main": "index.js",
   "bin": {
-    "app": "generate-genre.js"
+    "create-genre": "bin/createGenre.js",
+    "create-book": "bin/createBook.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gen": "node bin/generate-genre.js"
+    "genre": "node bin/generate-genre.js"
   },
   "keywords": [],
   "author": "",
