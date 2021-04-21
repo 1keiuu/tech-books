@@ -51,7 +51,7 @@ booksGroupByYears.forEach((booksGroupByYear) => {
     booksText += `${createSubTitle(settings["name-jp"])}\r\r`;
     targetBooks.forEach((books) => {
       books.forEach((book) => {
-        booksText += `${createCheckBoxText(book)}\r\r`;
+        booksText += `${createCheckBoxText(book, genre)}\r\r`;
       });
     });
     const achievementRate = dueYearDoneBooks.length / dueYearBooks.length;
@@ -60,5 +60,6 @@ booksGroupByYears.forEach((booksGroupByYear) => {
   }
 });
 
-console.log(booksGroupByYears);
+console.log(booksGroupByYears[0].body);
+
 fs.writeFileSync(`${rootDirPath}/README.md`, textData);
