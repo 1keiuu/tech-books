@@ -33,7 +33,7 @@ if (!isDirExist) {
   fs.mkdirSync(`${notesDirPath}`, { recursive: true });
   fs.writeFileSync(
     `${bookDirPath}/settings.json`,
-    JSON.stringify({ name: dirName, "name-en": "未設定" }, null, 2)
+    JSON.stringify({ name: dirName, "name-jp": "未設定" }, null, 2)
   );
   fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([]));
   console.log(`genre '${dirName}' is successfully created`);

@@ -3,7 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const { createCheckBoxText } = require("./templateUtility");
+const { createCheckBoxText, createSubTitle } = require("./templateUtility");
 
 const templatePath = path.resolve(__dirname, "./template.md");
 const buffer = fs.readFileSync(templatePath);
@@ -16,13 +16,17 @@ const rootDirPath = path.resolve(__dirname, "../../../");
 
 const dirArray = fs.readdirSync(baseBookDirPath);
 let textData = "";
+
 for (let i = 0; i < dirArray.length; i++) {
-  const dir = dirArray[i];
-  if (dir == "README.md") continue;
-  const bookJsonDirPath = `${baseBookDirPath}/${dir}/books.json`;
-  const json = JSON.parse(fs.readFileSync(bookJsonDirPath));
-  json.forEach((obj) => {
-    textData += `${createCheckBoxText(obj)}\r`;
+  const dirName = dirArray[i];
+  if (dirName == "README.md") continue;
+  const bookJsonDirPath = `${baseBookDirPath}/${dirName}/books.json`;
+  const settingJsonDirPath = `${baseBookDirPath}/${dirName}/settings.json`;
+  const settings = JSON.parse(fs.readFileSync(settingJsonDirPath));
+  textData += `${createSubTitle(settings["name-jp"])}\r\r`;
+  const books = JSON.parse(fs.readFileSync(bookJsonDirPath));
+  books.forEach((obj) => {
+    textData += `${createCheckBoxText(obj)}\r\r`;
   });
 }
 

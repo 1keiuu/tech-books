@@ -4,3 +4,7 @@ exports.createCheckBoxText = (obj) => {
   else text = "- [ ]";
   return `${text} [${obj.title}](${obj.amazonLink})`;
 };
+
+exports.createSubTitle = (title) => {
+  return `**${title}**`;
+};
