@@ -5,7 +5,8 @@
   "main": "index.js",
   "bin": {
     "create-genre": "bin/createGenre.js",
-    "create-book": "bin/createBook.js"
+    "create-book": "bin/createBook.js",
+    "update-readme": "scripts/updateReadme/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
