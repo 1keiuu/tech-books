@@ -12,6 +12,7 @@ exports.generateBooksJson = (bookTitle) => {
     title: bookTitle,
     amazonLink: "",
     noteLink: "",
+    dueYear: "",
     isDone: false,
   };
   return JSON.stringify(data, null, 2);
