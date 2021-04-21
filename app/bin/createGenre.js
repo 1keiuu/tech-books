@@ -24,7 +24,7 @@ if (!dirNameJP) {
 
 const fs = require("fs");
 
-const baseDirPath = "../data/books/";
+const baseDirPath = "data/books/";
 const dirPath = `${baseDirPath}/${dirName}`;
 
 const isDirExist = fs.existsSync(dirPath);
@@ -35,11 +35,12 @@ if (isDirExist) {
 
 try {
   fs.mkdirSync(dirPath);
+  fs.mkdirSync(`notes/${dirName}`);
   fs.writeFileSync(
     `${dirPath}/settings.json`,
     generateSettingsJson(dirName, dirNameJP)
   );
-  fs.writeFileSync(`${dirPath}/books.json`, generateBooksJson());
+  fs.writeFileSync(`${dirPath}/books.json`, []);
 
   console.log(`genre '${dirName}' is successfully created.`);
 } catch (e) {
