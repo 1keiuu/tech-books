@@ -4,6 +4,7 @@
     "amazonLink": "https://www.amazon.co.jp/Kubernetes%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89-%E7%AC%AC2%E7%89%88-Top-Gear-%E9%9D%92%E5%B1%B1/dp/4295009792",
     "noteLink": "",
     "isDone": false,
-    "dueYear": "2021"
+    "dueYear": "2021",
+    "slug": "kube-perfect"
   }
 ]

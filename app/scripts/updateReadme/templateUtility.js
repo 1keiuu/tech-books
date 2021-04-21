@@ -2,8 +2,8 @@ exports.createCheckBoxText = (obj, genre) => {
   let text = "";
   if (obj.isDone) text = "- [x]";
   else text = "- [ ]";
-  const noteLink = `tech-books/tree/main/notes/${genre}/${obj.title}`;
-  return `${text} [${obj.title}](${obj.amazonLink})\r\r[memo](${noteLink})`;
+  const noteLink = `tech-books/tree/main/notes/${genre}/${obj.slug}`;
+  return `${text} [${obj.title}](${obj.amazonLink}) / [memo](${noteLink})`;
 };
 
 exports.createSubTitle = (title) => {

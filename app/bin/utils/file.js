@@ -10,6 +10,7 @@ exports.generateBooksJson = (bookTitle) => {
   if (!bookTitle) return JSON.stringify({}, null, 2);
   const data = {
     title: bookTitle,
+    slug: "",
     amazonLink: "",
     noteLink: "",
     dueYear: "",
