@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const { generateSettingsJson, generateBooksJson } = require("./utils/file");
-const checkAndDeleteDir = (dirPath) => {
-  const isDirExist = fs.existsSync(dirPath);
+const checkAndDeleteDir = (bookDirPath) => {
+  const isDirExist = fs.existsSync(bookDirPath);
   if (isDirExist) {
-    fs.rmdirSync(dirPath);
+    fs.rmdirSync(bookDirPath, { recursive: true });
   }
 };
 
@@ -23,27 +23,31 @@ if (!dirNameJP) {
 }
 
 const fs = require("fs");
+const path = require("path");
+const baseBookDirPath = path.resolve(__dirname, "../../data/books/");
+const bookDirPath = `${baseBookDirPath}/${dirName}`;
 
-const baseDirPath = "data/books/";
-const dirPath = `${baseDirPath}/${dirName}`;
+const baseNotesDirPath = path.resolve(__dirname, "../../notes/");
+const notesDirPath = `${baseNotesDirPath}/${dirName}`;
 
-const isDirExist = fs.existsSync(dirPath);
+const isDirExist = fs.existsSync(bookDirPath);
 
 if (isDirExist) {
   throw Error("Exit: Duplication Error. This genre already exists");
 }
 
 try {
-  fs.mkdirSync(dirPath);
-  fs.mkdirSync(`notes/${dirName}`);
+  fs.mkdirSync(bookDirPath);
+  fs.mkdirSync(notesDirPath);
+
   fs.writeFileSync(
-    `${dirPath}/settings.json`,
+    `${bookDirPath}/settings.json`,
     generateSettingsJson(dirName, dirNameJP)
   );
-  fs.writeFileSync(`${dirPath}/books.json`, []);
+  fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([], null, 2));
 
   console.log(`genre '${dirName}' is successfully created.`);
 } catch (e) {
-  checkAndDeleteDir(dirPath);
+  checkAndDeleteDir(bookDirPath);
   throw Error(e);
 }
