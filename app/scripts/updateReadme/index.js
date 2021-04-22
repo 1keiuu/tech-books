@@ -8,7 +8,6 @@ const { createCheckBoxText, createSubTitle } = require("./templateUtility");
 const templatePath = path.resolve(__dirname, "./template.md");
 const buffer = fs.readFileSync(templatePath);
 const templateStr = buffer.toString();
-// console.log(templateStr);
 
 const baseBookDirPath = path.resolve(__dirname, "../../../data/books/");
 const baseNotesDirPath = path.resolve(__dirname, "../../../notes/");
@@ -18,7 +17,7 @@ const genres = fs.readdirSync(baseBookDirPath);
 
 // FIXME:かなり適当に書いてるのでリファクタ
 
-let textData = "";
+let textData = templateStr;
 const booksGroupByYears = [
   { year: "2021", body: [] },
   { year: "2022", body: [] },
