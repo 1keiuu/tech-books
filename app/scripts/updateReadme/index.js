@@ -25,17 +25,18 @@ const booksGroupByYears = [
   //   { year: "2023", body: [] },
 ];
 
+const years = ["2021", "2022", "2023"];
+
 // by year
-for (let i1 = 0; i1 < booksGroupByYears.length; i1++) {
-  const booksGroupByYear = booksGroupByYears[i1];
-  const targetYear = booksGroupByYear.year;
-  const targetBooks = booksGroupByYear.body;
+for (let i1 = 0; i1 < years.length; i1++) {
+  const targetYear = years[i1];
 
   // by genre
   const allBooks = [];
-  let booksText = "";
+  const booksTextArray = [];
   for (let i2 = 0; i2 < genres.length; i2++) {
     const genre = genres[i2];
+    let booksText = "";
     if (genre == "README.md") continue;
     const bookJsonDirPath = `${baseBookDirPath}/${genre}/books.json`;
     const settingJsonDirPath = `${baseBookDirPath}/${genre}/settings.json`;
@@ -45,14 +46,15 @@ for (let i1 = 0; i1 < booksGroupByYears.length; i1++) {
       return book.dueYear == targetYear;
     });
     if (dueYearBooks.length == 0) continue;
-    targetBooks.push(dueYearBooks);
+    // targetBooks.push(dueYearBooks);
     booksText += `${createSubTitle(settings["name-jp"])}\r\r`;
-    targetBooks.forEach((books) => {
-      books.forEach((book) => {
-        booksText += `${createCheckBoxText(book, genre)}\r\r`;
-        if (!allBooks.includes(book)) allBooks.push(book);
-      });
+    // targetBooks.forEach((books) => {
+    dueYearBooks.forEach((book) => {
+      booksText += `${createCheckBoxText(book, genre)}\r\r`;
+      if (!allBooks.includes(book)) allBooks.push(book);
     });
+    // });
+    booksTextArray.push(booksText);
   }
   // NOTE: 今年期限の本(全ジャンル)
   const allGenreBooksGroupByYear = allBooks.filter((book) => {
@@ -63,12 +65,12 @@ for (let i1 = 0; i1 < booksGroupByYears.length; i1++) {
     return book.isDone == true;
   });
   const achievementRate = Math.floor(
-    dueYearDoneBooks.length / allGenreBooksGroupByYear.length
+    (dueYearDoneBooks.length / allGenreBooksGroupByYear.length) * 100
   );
   if (allGenreBooksGroupByYear.length == 0) continue;
   textData += `## ${targetYear}\r`;
   textData += `**達成率: ${achievementRate}%**\r\r`;
-  textData += booksText;
+  textData += booksTextArray.join("");
 }
 
 fs.writeFileSync(`${rootDirPath}/README.md`, textData);
