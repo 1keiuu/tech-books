@@ -26,10 +26,10 @@ const createGenre = () => {
     );
   }
 
-  const baseBookDirPath = path.resolve(__dirname, "../../data/books/");
+  const baseBookDirPath = path.resolve(__dirname, "../../../data/books/");
   const bookDirPath = `${baseBookDirPath}/${dirName}`;
 
-  const baseNotesDirPath = path.resolve(__dirname, "../../notes/");
+  const baseNotesDirPath = path.resolve(__dirname, "../../../notes/");
   const notesDirPath = `${baseNotesDirPath}/${dirName}`;
 
   const isDirExist = fs.existsSync(bookDirPath);

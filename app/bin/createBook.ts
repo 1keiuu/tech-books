@@ -21,9 +21,9 @@ const createBook = () => {
   const fs = require("fs");
   const path = require("path");
 
-  const baseBookDirPath = path.resolve(__dirname, "../../data/books/");
+  const baseBookDirPath = path.resolve(__dirname, "../../../data/books/");
   const bookDirPath = `${baseBookDirPath}/${dirName}`;
-  const baseNoteDirPath = path.resolve(__dirname, "../../notes/");
+  const baseNoteDirPath = path.resolve(__dirname, "../../../notes/");
   const notesDirPath = `${baseNoteDirPath}/${dirName}`;
 
   const isDirExist = fs.existsSync(bookDirPath);
