@@ -1,4 +1,4 @@
-exports.createCheckBoxText = (obj: Book, genreName: string) => {
+export const createCheckBoxText = (obj: Book, genreName: string) => {
   let text = "";
   if (obj.isDone) text = "- [x]";
   else text = "- [ ]";
@@ -6,6 +6,6 @@ exports.createCheckBoxText = (obj: Book, genreName: string) => {
   return `${text} [${obj.title}](${obj.amazonLink}) / [memo](${noteLink})`;
 };
 
-exports.createSubTitle = (title: string) => {
+export const createSubTitle = (title: string) => {
   return `**${title}**`;
 };

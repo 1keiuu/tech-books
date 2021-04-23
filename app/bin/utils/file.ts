@@ -1,4 +1,4 @@
-exports.generateSettingsJson = (fileName, dirNameJP) => {
+export const generateSettingsJson = (fileName: string, dirNameJP: string) => {
   const data = {
     name: fileName,
     "name-jp": dirNameJP,
@@ -6,7 +6,7 @@ exports.generateSettingsJson = (fileName, dirNameJP) => {
   return JSON.stringify(data, null, 2);
 };
 
-exports.generateBooksJson = (bookTitle) => {
+export const generateBooksJson = (bookTitle: string) => {
   if (!bookTitle) return JSON.stringify({}, null, 2);
   const data = {
     title: bookTitle,

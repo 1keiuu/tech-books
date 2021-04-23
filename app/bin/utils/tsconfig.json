@@ -3,10 +3,10 @@
         "target": "es5",
         "module": "commonjs",
         "strict": true,
-        "outDir": "./dist",
+        "outDir": "../dist/utils",
         "esModuleInterop": true
     },
     "include": [
-        "./**/**/*.ts"
+        "./*.ts"
     ]
 }
