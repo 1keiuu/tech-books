@@ -1,7 +1,13 @@
 #!/usr/bin/env node
+import { generateSettingsJson, generateGenreReadme } from "./utils/file";
 
-const createGenre = () => {
-  const { generateSettingsJson, generateGenreReadme } = require("./utils/file");
+const main = () => {
+  const dirName = process.argv[2];
+  const dirNameJP = process.argv[3];
+  createGenre(dirName, dirNameJP);
+};
+
+export const createGenre = (dirName: string, dirNameJP: string) => {
   const fs = require("fs");
   const path = require("path");
 
@@ -12,8 +18,6 @@ const createGenre = () => {
     }
   };
 
-  const dirName = process.argv[2];
-  const dirNameJP = process.argv[3];
   if (!dirName && !dirNameJP) {
     throw Error(
       "Exit: Expected more than 2 arguments. dirName is first, dirNameJP is second"
@@ -47,7 +51,7 @@ const createGenre = () => {
     );
     fs.writeFileSync(
       `${bookDirPath}/settings.json`,
-      generateSettingsJson(dirName, dirNameJP)
+      JSON.stringify(generateSettingsJson(dirName, dirNameJP))
     );
     fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([], null, 2));
 
@@ -58,4 +62,4 @@ const createGenre = () => {
   }
 };
 
-createGenre();
+main();
