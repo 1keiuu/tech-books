@@ -1,11 +1,13 @@
 const path = require("path");
 const fs = require("fs");
+import { ignoreGenreDirPath } from "../constants/genre";
 
-export const getLatestGenreID = (ignoreDirName?: string[]): number => {
+// NOTE: return all genre's settings.
+export const listAllGenres = (ignoreDirName?: string[]): GenreSettings[] => {
+  const res: GenreSettings[] = [];
   const genresDir = path.resolve(__dirname, "../../../../data/genres");
-  const arr: number[] = [];
   fs.readdirSync(genresDir).forEach((genreName: string) => {
-    let ignorePaths = ["@types", "README.md"];
+    let ignorePaths: string[] = ignoreGenreDirPath;
     if (ignoreDirName) {
       ignorePaths = ignorePaths.concat(ignoreDirName);
     }
@@ -13,8 +15,16 @@ export const getLatestGenreID = (ignoreDirName?: string[]): number => {
       const genre = JSON.parse(
         fs.readFileSync(`${genresDir}/${genreName}/settings.json`)
       );
-      arr.push(genre.id);
+      res.push(genre);
     }
   });
-  return Math.max(...arr) + 1;
+  return res;
+};
+
+export const getLatestGenreID = (ignoreDirName?: string[]): number => {
+  const genresDir = path.resolve(__dirname, "../../../../data/genres");
+  const res: number[] = listAllGenres(ignoreDirName).map((genre) => {
+    return genre.id;
+  });
+  return Math.max(...res) + 1;
 };

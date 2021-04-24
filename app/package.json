@@ -6,7 +6,8 @@
   "bin": {
     "create-genre": "dist/bin/create-genre.js",
     "create-book": "dist/bin/create-book.js",
-    "update-readme": "dist/bin/update-readme.js"
+    "update-readme": "dist/bin/update-readme.js",
+    "init-data": "dist/bin/init-data.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
