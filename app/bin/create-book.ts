@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
 import { generateBooksJson } from "./utils/file";
+import { createGenre } from "./create-genre";
 
-const createBook = () => {
+const main = () => {
   const dirName = process.argv[2];
   const bookTitle = process.argv[3];
+  createBook(dirName, bookTitle);
+};
 
+export const createBook = (dirName: string, bookTitle: string) => {
   if (!dirName && !bookTitle) {
     throw Error(
       "Exit: Expected more than 2 arguments. dirName is first, bookTitle is second"
@@ -30,14 +34,7 @@ const createBook = () => {
 
   if (!isDirExist) {
     // id directory exists, it creates directory.
-    fs.mkdirSync(bookDirPath, { recursive: true });
-    fs.mkdirSync(`${notesDirPath}`, { recursive: true });
-    fs.writeFileSync(
-      `${bookDirPath}/settings.json`,
-      JSON.stringify({ name: dirName, "name-jp": "未設定" }, null, 2)
-    );
-    fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([]));
-    console.log(`genre '${dirName}' is successfully created`);
+    createGenre(dirName, "未設定");
   }
 
   const books = fs.readFileSync(`${bookDirPath}/books.json`);
@@ -49,4 +46,4 @@ const createBook = () => {
   console.log(`book '${bookTitle}' is added.`);
 };
 
-createBook();
+main();
