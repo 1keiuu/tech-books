@@ -42,8 +42,16 @@ export const createBook = (
   const books = fs.readFileSync(`${bookDirPath}/books.json`);
   const arr = JSON.parse(books);
   const genre = getGenre(["slug", genreSlug]);
+  console.log("genregenre:", genre);
   if (genre) {
-    const bookObj = generateBooksJson(genre.id, bookTitle, bookSlug);
+    const bookObj = generateBooksJson(
+      genre.id,
+      bookTitle,
+      bookSlug,
+      amazonLink,
+      dueYear,
+      isDone
+    );
     arr.push(bookObj);
   }
   fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify(arr, null, 2));

@@ -14,16 +14,19 @@ export const generateSettingsJson = (
 export const generateBooksJson = (
   genreID: number,
   bookTitle: string,
-  bookSlug: string
+  bookSlug: string,
+  amazonLink?: string,
+  dueYear?: string,
+  isDone?: boolean
 ): Book => {
   if (!bookSlug) throw Error("bookSlug is required");
   const data = {
     genreID: genreID,
     title: bookTitle ? bookTitle : "未設定",
     slug: bookSlug,
-    amazonLink: "",
-    dueYear: "",
-    isDone: false,
+    amazonLink: amazonLink ? amazonLink : "",
+    dueYear: dueYear ? dueYear : "2021",
+    isDone: isDone ? isDone : false,
   };
   return data;
 };

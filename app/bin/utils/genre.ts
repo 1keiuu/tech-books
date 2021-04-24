@@ -43,27 +43,14 @@ export const listAllBooksByGenre = (ignoreDirName?: string[]): Book[][] => {
   return res;
 };
 
-export const getGenre = (
-  [key, value]: [string, string],
-  ignoreDirName?: string[]
-): GenreSettings | null => {
-  const genresDir = path.resolve(__dirname, "../../../../data/genres");
-  genreFixtures.forEach((genre: GenreSettings) => {
-    let ignorePaths: string[] = ignoreGenreDirPath;
-    if (ignoreDirName) {
-      ignorePaths = ignorePaths.concat(ignoreDirName);
-    }
-    if (!ignorePaths.includes(genre.slug)) {
-      try {
-        const target = JSON.parse(
-          fs.readFileSync(`${genresDir}/${genre.slug}/settings.json`)
-        );
-        if (target[key] == value) return target;
-      } catch (e) {
-        return null;
-      }
-    }
+export const getGenre = ([key, value]: [
+  keyof GenreSettings,
+  string
+]): GenreSettings | null => {
+  const res = genreFixtures.find((genre: GenreSettings) => {
+    return genre[key] == value;
   });
+  if (res) return res;
   return null;
 };
 
