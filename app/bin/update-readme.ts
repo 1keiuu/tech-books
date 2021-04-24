@@ -16,7 +16,7 @@ const updateReadme = () => {
   const buffer = fs.readFileSync(templatePath);
   const templateStr = buffer.toString();
 
-  const baseBookDirPath = path.resolve(__dirname, "../../../data/books");
+  const baseBookDirPath = path.resolve(__dirname, "../../../data/genres");
   const rootDirPath = path.resolve(__dirname, "../../../");
 
   const genres = fs.readdirSync(baseBookDirPath);

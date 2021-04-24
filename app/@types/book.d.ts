@@ -1,4 +1,5 @@
 interface Book {
+  genreID: number;
   title: string;
   amazonLink: string;
   slug: string;

@@ -30,7 +30,7 @@ export const createGenre = (dirName: string, dirNameJP: string) => {
     );
   }
 
-  const baseBookDirPath = path.resolve(__dirname, "../../../data/books/");
+  const baseBookDirPath = path.resolve(__dirname, "../../../data/genres/");
   const bookDirPath = `${baseBookDirPath}/${dirName}`;
 
   const baseNotesDirPath = path.resolve(__dirname, "../../../notes/");

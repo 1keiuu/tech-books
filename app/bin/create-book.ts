@@ -30,7 +30,7 @@ export const createBook = (
   const fs = require("fs");
   const path = require("path");
 
-  const baseBookDirPath = path.resolve(__dirname, "../../../data/books/");
+  const baseBookDirPath = path.resolve(__dirname, "../../../data/genres/");
   const bookDirPath = `${baseBookDirPath}/${genreName}`;
   const baseNoteDirPath = path.resolve(__dirname, "../../../notes/");
   const notesDirPath = `${baseNoteDirPath}/${genreName}`;
