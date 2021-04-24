@@ -9,14 +9,7 @@ const main = () => {
 export const initData = () => {
   const genresDir = path.resolve(__dirname, "../../../data/genres");
   const fs = require("fs");
-  console.log(listAllGenres());
-  //   fs.readdirSync(genresDir).forEach((genreName: string) => {
-  //     let ignorePaths: string[] = [];
-  //     if (!ignorePaths.includes(genreName)) {
-  //       const genre = JSON.parse(
-  //         fs.readFileSync(`${genresDir}/${genreName}/settings.json`)
-  //       );
-  //     }
-  //   });
+  const genres = listAllGenres();
+  genres.forEach((genre: GenreSettings) => {});
 };
 main();

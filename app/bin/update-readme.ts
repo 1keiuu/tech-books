@@ -53,7 +53,7 @@ const updateReadme = () => {
       });
       if (dueYearBooks.length == 0) continue;
       // targetBooks.push(dueYearBooks);
-      booksText += `${createSubTitle(settings["name-jp"])}\r\r`;
+      booksText += `${createSubTitle(settings["name"])}\r\r`;
       // targetBooks.forEach((books) => {
       dueYearBooks.forEach((book: Book) => {
         booksText += `${createCheckBoxText(book, genre)}\r\r`;

@@ -4,6 +4,6 @@ interface Genre {
 
 interface GenreSettings {
   id: number;
+  slug: string;
   name: string;
-  "name-jp": string;
 }

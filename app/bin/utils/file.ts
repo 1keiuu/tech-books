@@ -5,8 +5,8 @@ export const generateSettingsJson = (
 ): GenreSettings => {
   const data = {
     id: genreID,
-    name: fileName ? fileName : "unset",
-    "name-jp": dirNameJP ? dirNameJP : "未設定",
+    slug: fileName ? fileName : "unset",
+    name: dirNameJP ? dirNameJP : "未設定",
   };
   return data;
 };
