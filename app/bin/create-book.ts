@@ -11,19 +11,23 @@ const main = () => {
 };
 
 export const createBook = (
-  genreName: string,
+  genreSlug: string,
   bookSlug: string,
-  bookTitle: string
+  bookTitle: string,
+  genreName?: string,
+  amazonLink?: string,
+  dueYear?: string,
+  isDone?: boolean
 ) => {
-  if (!genreName && !bookTitle) {
+  if (!genreSlug && !bookTitle) {
     throw Error(
-      "Exit: Expected more than 2 arguments. genreName is first, bookTitle is second"
+      "Exit: Expected more than 2 arguments. genreSlug is first, bookTitle is second"
     );
   }
 
   if (!bookTitle || !bookSlug) {
     throw Error(
-      "Exit: Expected one or two more arguments. genreName, bookSlug, and bookTitle are required"
+      "Exit: Expected one or two more arguments. genreSlug, bookSlug, and bookTitle are required"
     );
   }
 
@@ -31,15 +35,16 @@ export const createBook = (
   const path = require("path");
 
   const baseBookDirPath = path.resolve(__dirname, "../../../data/genres/");
-  const bookDirPath = `${baseBookDirPath}/${genreName}`;
+  const bookDirPath = `${baseBookDirPath}/${genreSlug}`;
   const baseNoteDirPath = path.resolve(__dirname, "../../../notes/");
-  const notesDirPath = `${baseNoteDirPath}/${genreName}`;
+  const notesDirPath = `${baseNoteDirPath}/${genreSlug}`;
 
   const isDirExist = fs.existsSync(bookDirPath);
 
   if (!isDirExist) {
     // NOTE: if directory doesn't exist, it creates new directory.
-    createGenre(genreName, "未設定");
+    const GENRE_NAME = genreName ? genreName : "未設定";
+    createGenre(genreSlug, GENRE_NAME);
   }
 
   // NOTE: read current books.json. and append new book to it.
