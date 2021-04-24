@@ -1,20 +1,20 @@
 ## コマンド
-- 新しいジャンルディレクトリを追加する
+- 新しいジャンルディレクトリを追加する  
 `create-genre [ジャンル名(英)] [ジャンル名(日)]`
 ```
 ex) create-genre frontend フロントエンド
 ```
 
-- 新しい本を追加する
+- 新しい本を追加する  
 `create-book [ジャンル名(英)] [本のslug(ディレクトリ名)] [本のタイトル(日)]`
 ```
 ex) create-book frontend hands-on-node-js ハンズオンNode.js
 ```
 
-- dataをfixturesを元に初期化する(notesは未対応)
+- dataをfixturesを元に初期化する(notesは未対応)  
 `init-data`
 
-- メインのREADMEを更新する
+- メインのREADMEを更新する  
 `update-readme`
 
 ## 新しいコマンドを追加する時
