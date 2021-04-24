@@ -1,4 +1,4 @@
-export const books: Book[] = [
+export const fixtureBooks: Book[] = [
   {
     genreID: 1,
     title: "問題解決力を鍛える!アルゴリズムとデータ構造",
