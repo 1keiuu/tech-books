@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
 import { generateSettingsJson } from "./utils/file";
 
 const main = () => {
@@ -43,16 +43,15 @@ export const createGenre = (dirName: string, dirNameJP: string) => {
   }
 
   try {
-    fs.mkdirSync(bookDirPath);
-    fs.mkdirSync(notesDirPath);
-
-    fs.writeFileSync(
-      `${bookDirPath}/settings.json`,
-      JSON.stringify(generateSettingsJson(dirName, dirNameJP))
-    );
-    fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([], null, 2));
-
-    console.log(`genre '${dirName}' is successfully created.`);
+    // fs.mkdirSync(bookDirPath);
+    // fs.mkdirSync(notesDirPath);
+    // const genreID = 0;
+    // fs.writeFileSync(
+    //   `${bookDirPath}/settings.ts`,
+    //   JSON.stringify(generateSettingsJson(genreID, dirName, dirNameJP))
+    // );
+    // fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([], null, 2));
+    // console.log(`genre '${dirName}' is successfully created.`);
   } catch (e) {
     checkAndDeleteDir(bookDirPath);
     throw Error(e);

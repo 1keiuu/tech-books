@@ -45,8 +45,8 @@ export const createBook = (
   // NOTE: read current books.json. and append new book to it.
   const books = fs.readFileSync(`${bookDirPath}/books.json`);
   const arr = JSON.parse(books);
-  const bookObj = generateBooksJson(bookTitle, bookSlug);
-  arr.push(bookObj);
+  // const bookObj = generateBooksJson(genreID, bookTitle, bookSlug);
+  // arr.push(bookObj);
   fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify(arr, null, 2));
   fs.mkdirSync(`${notesDirPath}/${bookSlug}`);
   fs.writeFileSync(`${notesDirPath}/README.md`, generateGenreReadme(bookTitle));
