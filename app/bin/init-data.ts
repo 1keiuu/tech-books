@@ -7,18 +7,20 @@ const path = require("path");
 const fs = require("fs");
 const basePath = path.resolve(__dirname, "../../../");
 import { fixtureBooks } from "../fixtures/books";
+import { fixtureGenres } from "../fixtures/genres";
+
 import { groupBy } from "./utils";
 
 const main = () => {
   initData();
 };
 export const initData = () => {
-  const genres = listAllGenreSettings();
   const booksByGenre = groupBy(fixtureBooks, "genreID");
+
   (booksByGenre as Book[][]).forEach((books) => {
     books.forEach((book) => {
       console.log(book);
-      const genre = genres.find((genre) => {
+      const genre = fixtureGenres.find((genre) => {
         return genre.id == book.genreID;
       });
       if (!genre) throw Error("Exit: genre is not found.");
