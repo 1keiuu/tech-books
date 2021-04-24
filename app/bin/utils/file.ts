@@ -9,12 +9,15 @@ export const generateSettingsJson = (
   return data;
 };
 
-export const generateBooksJson = (bookTitle: string): Book => {
+export const generateBooksJson = (
+  bookTitle: string,
+  bookSlug: string
+): Book => {
+  if (!bookSlug) throw Error("bookSlug is required");
   const data = {
     title: bookTitle ? bookTitle : "未設定",
-    slug: "unset",
+    slug: bookSlug,
     amazonLink: "",
-    noteLink: "",
     dueYear: "",
     isDone: false,
   };

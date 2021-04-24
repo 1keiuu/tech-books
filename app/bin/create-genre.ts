@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { generateSettingsJson, generateGenreReadme } from "./utils/file";
+import { generateSettingsJson } from "./utils/file";
 
 const main = () => {
   const dirName = process.argv[2];
@@ -45,10 +45,7 @@ export const createGenre = (dirName: string, dirNameJP: string) => {
   try {
     fs.mkdirSync(bookDirPath);
     fs.mkdirSync(notesDirPath);
-    fs.writeFileSync(
-      `${notesDirPath}/README.md`,
-      generateGenreReadme(dirNameJP)
-    );
+
     fs.writeFileSync(
       `${bookDirPath}/settings.json`,
       JSON.stringify(generateSettingsJson(dirName, dirNameJP))
