@@ -1,25 +1,27 @@
-export const generateSettingsJson = (fileName: string, dirNameJP: string) => {
+export const generateSettingsJson = (
+  fileName: string,
+  dirNameJP: string
+): GenreSettings => {
   const data = {
-    name: fileName,
-    "name-jp": dirNameJP,
+    name: fileName ? fileName : "unset",
+    "name-jp": dirNameJP ? dirNameJP : "未設定",
   };
-  return JSON.stringify(data, null, 2);
+  return data;
 };
 
-export const generateBooksJson = (bookTitle: string) => {
-  if (!bookTitle) return JSON.stringify({}, null, 2);
+export const generateBooksJson = (bookTitle: string): Book => {
   const data = {
-    title: bookTitle,
-    slug: "",
+    title: bookTitle ? bookTitle : "未設定",
+    slug: "unset",
     amazonLink: "",
     noteLink: "",
     dueYear: "",
     isDone: false,
   };
-  return JSON.stringify(data, null, 2);
+  return data;
 };
 
-export const generateGenreReadme = (genreNameJp: string) => {
+export const generateGenreReadme = (genreNameJp: string): string => {
   if (!genreNameJp) return "";
   return `# ${genreNameJp}\r\r`;
 };

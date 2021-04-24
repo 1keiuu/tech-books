@@ -33,13 +33,14 @@ export const createBook = (dirName: string, bookTitle: string) => {
   const isDirExist = fs.existsSync(bookDirPath);
 
   if (!isDirExist) {
-    // id directory exists, it creates directory.
+    // NOTE: if directory doesn't exist, it creates new directory.
     createGenre(dirName, "未設定");
   }
 
+  // NOTE: read current books.json. and append new book to it.
   const books = fs.readFileSync(`${bookDirPath}/books.json`);
   const arr = JSON.parse(books);
-  const bookObj = JSON.parse(generateBooksJson(bookTitle));
+  const bookObj = generateBooksJson(bookTitle);
   arr.push(bookObj);
   fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify(arr, null, 2));
   fs.mkdirSync(`${notesDirPath}/${bookTitle}`);
