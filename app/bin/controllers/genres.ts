@@ -1,7 +1,11 @@
 import { generateSettingsJson } from "../utils/file";
 import { getLatestGenreID } from "../utils/genre";
 
-export const createGenre = (genreSlug: string, genreName: string) => {
+export const createGenre = (
+  genreSlug: string,
+  genreName: string,
+  genreID?: number | null
+) => {
   const fs = require("fs");
   const path = require("path");
 
@@ -41,18 +45,22 @@ export const createGenre = (genreSlug: string, genreName: string) => {
   }
 
   try {
-    fs.mkdirSync(bookDirPath);
-    fs.mkdirSync(notesDirPath);
-    const genreID = getLatestGenreID([genreSlug]);
+    // fs.mkdirSync(notesDirPath);
+    let GENRE_ID = genreID;
+    if (!GENRE_ID) GENRE_ID = getLatestGenreID([genreSlug]);
+    fs.mkdirSync(`${bookDirPath}`);
     fs.writeFileSync(
       `${bookDirPath}/settings.json`,
       JSON.stringify(
-        generateSettingsJson(genreID, genreSlug, genreName),
+        generateSettingsJson(GENRE_ID, genreSlug, genreName),
         null,
         2
-      )
+      ),
+      { recursive: true }
     );
-    fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([], null, 2));
+    fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify([], null, 2), {
+      recursive: true,
+    });
     console.log(`genre '${genreSlug}' is successfully created.`);
   } catch (e) {
     checkAndDeleteDir(bookDirPath, notesDirPath);

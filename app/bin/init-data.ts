@@ -2,6 +2,7 @@
 
 import { listAllGenreSettings, listAllBooksByGenre } from "./utils/genre";
 import { createBook } from "./controllers/books";
+import { createGenre } from "./controllers/genres";
 
 const path = require("path");
 const fs = require("fs");
@@ -18,7 +19,8 @@ const main = () => {
 export const initData = () => {
   const booksByGenre = groupBy(fixtureBooks, "genreID");
   genreFixtures.forEach((g) => {
-    cleanDataAndNotes(g.slug);
+    cleanBookData(g.slug);
+    createGenre(g.slug, g.name, g.id);
   });
   (booksByGenre as Book[][]).forEach((books) => {
     books.forEach((book) => {
@@ -31,9 +33,8 @@ export const initData = () => {
   });
 };
 
-const cleanDataAndNotes = (genreSlug: string) => {
+const cleanBookData = (genreSlug: string) => {
   fs.rmdirSync(`${basePath}/data/genres/${genreSlug}`, { recursive: true });
-  fs.rmdirSync(`${basePath}/notes/${genreSlug}`, { recursive: true });
   console.log(`genre name: '${genreSlug}' is successfully deleted`);
 };
 

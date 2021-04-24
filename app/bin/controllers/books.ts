@@ -35,14 +35,13 @@ export const createBook = (
   if (!isDirExist) {
     // NOTE: if directory doesn't exist, it creates new directory.
     const GENRE_NAME = genreName ? genreName : "未設定";
-    createGenre(genreSlug, GENRE_NAME);
+    createGenre(genreSlug, GENRE_NAME, null);
   }
 
   // NOTE: read current books.json. and append new book to it.
   const books = fs.readFileSync(`${bookDirPath}/books.json`);
   const arr = JSON.parse(books);
   const genre = getGenre(["slug", genreSlug]);
-  console.log("genregenre:", genre);
   if (genre) {
     const bookObj = generateBooksJson(
       genre.id,
@@ -55,10 +54,10 @@ export const createBook = (
     arr.push(bookObj);
   }
   fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify(arr, null, 2));
-  fs.mkdirSync(`${notesDirPath}/${bookSlug}`);
-  fs.writeFileSync(
-    `${notesDirPath}/${bookSlug}/README.md`,
-    generateGenreReadme(bookTitle)
-  );
+  // fs.mkdirSync(`${notesDirPath}/${bookSlug}`);
+  // fs.writeFileSync(
+  //   `${notesDirPath}/${bookSlug}/README.md`,
+  //   generateGenreReadme(bookTitle)
+  // );
   console.log(`book '${bookTitle}' is added.`);
 };
