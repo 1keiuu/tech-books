@@ -45,6 +45,9 @@ export const createBook = (
   // arr.push(bookObj);
   fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify(arr, null, 2));
   fs.mkdirSync(`${notesDirPath}/${bookSlug}`);
-  fs.writeFileSync(`${notesDirPath}/README.md`, generateGenreReadme(bookTitle));
+  fs.writeFileSync(
+    `${notesDirPath}/${bookSlug}/README.md`,
+    generateGenreReadme(bookTitle)
+  );
   console.log(`book '${bookTitle}' is added.`);
 };

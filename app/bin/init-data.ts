@@ -16,7 +16,9 @@ const main = () => {
 };
 export const initData = () => {
   const booksByGenre = groupBy(fixtureBooks, "genreID");
-
+  fixtureGenres.forEach((g) => {
+    cleanDataAndNotes(g.slug);
+  });
   (booksByGenre as Book[][]).forEach((books) => {
     books.forEach((book) => {
       console.log(book);
@@ -24,7 +26,6 @@ export const initData = () => {
         return genre.id == book.genreID;
       });
       if (!genre) throw Error("Exit: genre is not found.");
-      cleanDataAndNotes(genre.slug);
       createDataAndNotes(book, genre);
     });
   });

@@ -1,4 +1,5 @@
-# Real World HTTP
+# Real World HTTP ―歴史とコードに学ぶインターネットとウェブ技術
+
 [code](https://github.com/1keiuu/playground/tree/main/go/rw_http)
 
 - [1章 HTTP/1.0の世界:基本となる4つの要素](#1章-http10の世界基本となる4つの要素)  
