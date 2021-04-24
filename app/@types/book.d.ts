@@ -1,4 +1,4 @@
-interface Book {
+declare interface Book {
   genreID: number;
   title: string;
   amazonLink: string;

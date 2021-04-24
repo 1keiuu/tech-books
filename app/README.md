@@ -11,6 +11,12 @@ ex) create-genre frontend フロントエンド
 ex) create-book frontend hands-on-node-js ハンズオンNode.js
 ```
 
+- dataをfixturesを元に初期化する(notesは未対応)
+`init-data`
+
+- メインのREADMEを更新する
+`update-readme`
+
 ## 新しいコマンドを追加する時
 bin以下にファイルを追加。先頭に`#!/usr/bin/env node`を書く。
 作成後に

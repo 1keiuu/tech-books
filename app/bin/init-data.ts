@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 
-import { listAllGenreSettings, listAllBooksByGenre } from "./utils/genre";
 import { createBook } from "./controllers/books";
 import { createGenre } from "./controllers/genres";
 

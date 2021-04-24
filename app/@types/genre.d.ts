@@ -1,8 +1,8 @@
-interface Genre {
+declare interface Genre {
   books: Book[];
 }
 
-interface GenreSettings {
+declare interface GenreSettings {
   id: number;
   slug: string;
   name: string;
