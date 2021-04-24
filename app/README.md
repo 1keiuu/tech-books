@@ -6,9 +6,9 @@ ex) create-genre frontend フロントエンド
 ```
 
 - 新しい本を追加する
-`create-book [ジャンル名(英)] [本のタイトル]`
+`create-book [ジャンル名(英)] [本のslug(ディレクトリ名)] [本のタイトル(日)]`
 ```
-ex) create-book frontend ハンズオンNode.js
+ex) create-book frontend hands-on-node-js ハンズオンNode.js
 ```
 
 ## 新しいコマンドを追加する時
