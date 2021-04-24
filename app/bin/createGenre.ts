@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const createGenre = () => {
-  const { generateSettingsJson, generateBooksJson } = require("./utils/file");
+  const { generateSettingsJson, generateGenreReadme } = require("./utils/file");
   const fs = require("fs");
   const path = require("path");
 
@@ -41,7 +41,10 @@ const createGenre = () => {
   try {
     fs.mkdirSync(bookDirPath);
     fs.mkdirSync(notesDirPath);
-
+    fs.writeFileSync(
+      `${notesDirPath}/README.md`,
+      generateGenreReadme(dirNameJP)
+    );
     fs.writeFileSync(
       `${bookDirPath}/settings.json`,
       generateSettingsJson(dirName, dirNameJP)

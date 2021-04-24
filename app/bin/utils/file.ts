@@ -18,3 +18,8 @@ export const generateBooksJson = (bookTitle: string) => {
   };
   return JSON.stringify(data, null, 2);
 };
+
+export const generateGenreReadme = (genreNameJp: string) => {
+  if (!genreNameJp) return "";
+  return `# ${genreNameJp}\r\r`;
+};
