@@ -1,4 +1,4 @@
-export const fixtureGenres = [
+export const genreFixtures: GenreSettings[] = [
   {
     id: 1,
     slug: "algorithm",

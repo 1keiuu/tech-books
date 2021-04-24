@@ -1,6 +1,6 @@
 import { generateBooksJson, generateGenreReadme } from "../utils/file";
 import { createGenre } from "./genres";
-
+import { getGenre } from "../utils/genre";
 export const createBook = (
   genreSlug: string,
   bookSlug: string,
@@ -41,8 +41,11 @@ export const createBook = (
   // NOTE: read current books.json. and append new book to it.
   const books = fs.readFileSync(`${bookDirPath}/books.json`);
   const arr = JSON.parse(books);
-  // const bookObj = generateBooksJson(genreID, bookTitle, bookSlug);
-  // arr.push(bookObj);
+  const genre = getGenre(["slug", genreSlug]);
+  if (genre) {
+    const bookObj = generateBooksJson(genre.id, bookTitle, bookSlug);
+    arr.push(bookObj);
+  }
   fs.writeFileSync(`${bookDirPath}/books.json`, JSON.stringify(arr, null, 2));
   fs.mkdirSync(`${notesDirPath}/${bookSlug}`);
   fs.writeFileSync(

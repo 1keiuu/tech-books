@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 import { ignoreGenreDirPath } from "../constants/genre";
+import { genreFixtures } from "../../fixtures/genres";
 
 // NOTE: return all genre's settings.
 export const listAllGenreSettings = (
@@ -42,9 +43,34 @@ export const listAllBooksByGenre = (ignoreDirName?: string[]): Book[][] => {
   return res;
 };
 
+export const getGenre = (
+  [key, value]: [string, string],
+  ignoreDirName?: string[]
+): GenreSettings | null => {
+  const genresDir = path.resolve(__dirname, "../../../../data/genres");
+  genreFixtures.forEach((genre: GenreSettings) => {
+    let ignorePaths: string[] = ignoreGenreDirPath;
+    if (ignoreDirName) {
+      ignorePaths = ignorePaths.concat(ignoreDirName);
+    }
+    if (!ignorePaths.includes(genre.slug)) {
+      try {
+        const target = JSON.parse(
+          fs.readFileSync(`${genresDir}/${genre.slug}/settings.json`)
+        );
+        if (target[key] == value) return target;
+      } catch (e) {
+        return null;
+      }
+    }
+  });
+  return null;
+};
+
 export const getLatestGenreID = (ignoreDirName?: string[]): number => {
   const res: number[] = listAllGenreSettings(ignoreDirName).map((genre) => {
     return genre.id;
   });
+  if (res.length < 1) return 1;
   return Math.max(...res) + 1;
 };
