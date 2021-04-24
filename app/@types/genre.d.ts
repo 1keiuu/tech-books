@@ -3,7 +3,7 @@ interface Genre {
 }
 
 interface GenreSettings {
-  genreID: number;
+  id: number;
   name: string;
   "name-jp": string;
 }
