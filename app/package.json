@@ -6,11 +6,10 @@
   "bin": {
     "create-genre": "dist/bin/create-genre.js",
     "create-book": "dist/bin/create-book.js",
-    "update-readme": "dist/scripts/updateReadme/index.js"
+    "update-readme": "dist/bin/update-readme.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "genre": "node bin/generate-genre.js",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc"
   },
