@@ -1,25 +1,28 @@
 #!/usr/bin/env node
 
+const main = () => {
+  updateReadme();
+};
 const updateReadme = () => {
   const fs = require("fs");
   const path = require("path");
 
-  const { createCheckBoxText, createSubTitle } = require("./templateUtility");
+  const { createCheckBoxText, createSubTitle } = require("./utils/template");
 
   const templatePath = path.resolve(
     __dirname,
-    "../../../scripts/updateReadme/template.md"
+    "../../bin/assets/genre/ReadmeTemplate.md"
   );
   const buffer = fs.readFileSync(templatePath);
   const templateStr = buffer.toString();
 
-  const baseBookDirPath = path.resolve(__dirname, "../../../../data/books/");
-  const baseNotesDirPath = path.resolve(__dirname, "../../../../notes/");
-  const rootDirPath = path.resolve(__dirname, "../../../../");
+  const baseBookDirPath = path.resolve(__dirname, "../../../data/books");
+  const rootDirPath = path.resolve(__dirname, "../../../");
 
   const genres = fs.readdirSync(baseBookDirPath);
-
-  // FIXME:かなり適当に書いてるのでリファクタ
+  console.log(baseBookDirPath);
+  console.log(genres);
+  //   FIXME:かなり適当に書いてるのでリファクタ
 
   let textData = templateStr;
   const booksGroupByYears = [
@@ -79,4 +82,4 @@ const updateReadme = () => {
   fs.writeFileSync(`${rootDirPath}/README.md`, textData);
 };
 
-updateReadme();
+main();
