@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { listAllGenreSettings } from "./utils/genre";
+
 const main = () => {
   updateReadme();
 };
@@ -24,7 +26,7 @@ const updateReadme = () => {
   const baseBookDirPath = path.resolve(__dirname, "../../../data/genres");
   const rootDirPath = path.resolve(__dirname, "../../../");
 
-  const genres = fs.readdirSync(baseBookDirPath);
+  const genres = listAllGenreSettings();
   //   FIXME:かなり適当に書いてるのでリファクタ
 
   let textData = templateStr;
@@ -46,9 +48,8 @@ const updateReadme = () => {
     for (let i2 = 0; i2 < genres.length; i2++) {
       const genre = genres[i2];
       let booksText = "";
-      if (genre == "README.md") continue;
-      const bookJsonDirPath = `${baseBookDirPath}/${genre}/books.json`;
-      const settingJsonDirPath = `${baseBookDirPath}/${genre}/settings.json`;
+      const bookJsonDirPath = `${baseBookDirPath}/${genre.slug}/books.json`;
+      const settingJsonDirPath = `${baseBookDirPath}/${genre.slug}/settings.json`;
       const settings = JSON.parse(fs.readFileSync(settingJsonDirPath));
       const books = JSON.parse(fs.readFileSync(bookJsonDirPath));
       const dueYearBooks = books.filter((book: Book) => {
@@ -59,8 +60,13 @@ const updateReadme = () => {
       booksText += `${createSubTitle(settings["name"])}\r\r`;
       // targetBooks.forEach((books) => {
       dueYearBooks.forEach((book: Book) => {
-        booksText += `${createCheckBoxText(book, genre)} `;
-        if (isReading(book, `${rootDirPath}/notes/${genre}/${book.slug}`)) {
+        booksText += `${createCheckBoxText(book, genre.slug)} `;
+        if (
+          isReading(
+            `${rootDirPath}/notes/${genre.slug}/${book.slug}`,
+            book.isDone
+          )
+        ) {
           booksText += `${createReadingImg()}`;
         }
         booksText += `\r\r`;

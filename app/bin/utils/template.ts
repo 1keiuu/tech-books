@@ -10,11 +10,11 @@ export const createSubTitle = (title: string) => {
   return `**${title}**`;
 };
 
-export const isReading = (book: Book, notePath: string) => {
+export const isReading = (notePath: string, isDone: boolean) => {
   const fs = require("fs");
   const res = fs.readFileSync(`${notePath}/README.md`);
   const lineLength = res.toString().split("\n").length;
-  if (lineLength > 5) return true;
+  if (lineLength > 5 && !isDone) return true;
   return false;
 };
 
