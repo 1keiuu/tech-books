@@ -1,9 +1,11 @@
-export const createCheckBoxText = (obj: Book, genreName: string) => {
-  let text = "";
-  if (obj.status == "done") text = "- [x]";
-  else text = "- [ ]";
-  const noteLink = `https://github.com/1keiuu/tech-books/tree/main/notes/${genreName}/${obj.slug}`;
-  return `${text} [${obj.title}](${noteLink})`;
+export const createCheckBoxText = (book: Book, genreName: string) => {
+  let checkboxText = "";
+  if (book.status == "done") checkboxText = "- [x]";
+  else checkboxText = "- [ ]";
+  const noteLink = `https://github.com/1keiuu/tech-books/tree/main/notes/${genreName}/${book.slug}`;
+  if (book.status !== "yet")
+    return `${checkboxText} [${book.title}](${noteLink})`;
+  else return `${checkboxText} ${book.title}`;
 };
 
 export const createSubTitle = (title: string) => {
