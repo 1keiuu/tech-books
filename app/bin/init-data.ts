@@ -45,7 +45,7 @@ const createDataAndNotes = (book: Book, genre: GenreSettings) => {
     genre.name,
     book.amazonLink,
     book.dueYear,
-    book.isDone
+    book.status
   );
 };
 main();

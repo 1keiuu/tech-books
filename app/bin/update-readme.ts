@@ -64,7 +64,7 @@ const updateReadme = () => {
         if (
           isReading(
             `${rootDirPath}/notes/${genre.slug}/${book.slug}`,
-            book.isDone
+            book.status
           )
         ) {
           booksText += `${createReadingImg()}`;
@@ -81,7 +81,7 @@ const updateReadme = () => {
     });
     // NOTE: 今年読んだ本(全ジャンル)
     const dueYearDoneBooks = allGenreBooksGroupByYear.filter((book) => {
-      return book.isDone == true;
+      return book.status == "done";
     });
     const achievementRate = Math.floor(
       (dueYearDoneBooks.length / allGenreBooksGroupByYear.length) * 100

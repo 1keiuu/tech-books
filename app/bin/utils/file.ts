@@ -17,7 +17,7 @@ export const generateBooksJson = (
   bookSlug: string,
   amazonLink?: string,
   dueYear?: string,
-  isDone?: boolean
+  status?: readingStatus
 ): Book => {
   if (!bookSlug) throw Error("bookSlug is required");
   const data = {
@@ -26,7 +26,7 @@ export const generateBooksJson = (
     slug: bookSlug,
     amazonLink: amazonLink ? amazonLink : "",
     dueYear: dueYear ? dueYear : "2021",
-    isDone: isDone ? isDone : false,
+    status: status ? status : "yet",
   };
   return data;
 };

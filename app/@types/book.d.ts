@@ -1,8 +1,9 @@
+declare type readingStatus = "yet" | "reading" | "done";
 declare interface Book {
   genreID: number;
   title: string;
   amazonLink: string;
   slug: string;
-  isDone: boolean;
+  status: readingStatus;
   dueYear: string;
 }

@@ -8,7 +8,7 @@ export const createBook = (
   genreName?: string,
   amazonLink?: string,
   dueYear?: string,
-  isDone?: boolean
+  status?: readingStatus
 ) => {
   if (!genreSlug && !bookTitle) {
     throw Error(
@@ -49,7 +49,7 @@ export const createBook = (
       bookSlug,
       amazonLink,
       dueYear,
-      isDone
+      status
     );
     arr.push(bookObj);
   }
