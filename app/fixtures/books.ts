@@ -31,7 +31,7 @@ export const fixtureBooks: Book[] = [
     genreID: 7,
     title: "Real World HTTP ―歴史とコードに学ぶインターネットとウェブ技術",
     slug: "real-world-http",
-    status: "yet",
+    status: "reading",
     dueYear: "2021",
   },
   {
