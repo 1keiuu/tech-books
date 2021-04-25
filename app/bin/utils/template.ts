@@ -19,5 +19,5 @@ export const isReading = (notePath: string, isDone: boolean) => {
 };
 
 export const createReadingImg = () => {
-  return "<img src='https://user-images.githubusercontent.com/46051957/115982968-91f26400-a5d9-11eb-9d19-9bb5ebce27d8.jpg' alt='reading...'/> ";
+  return "　<img src='https://user-images.githubusercontent.com/46051957/115982968-91f26400-a5d9-11eb-9d19-9bb5ebce27d8.jpg' alt='reading...'/> ";
 };
