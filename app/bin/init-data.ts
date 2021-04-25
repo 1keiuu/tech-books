@@ -43,7 +43,6 @@ const createDataAndNotes = (book: Book, genre: GenreSettings) => {
     book.slug,
     book.title,
     genre.name,
-    book.amazonLink,
     book.dueYear,
     book.status
   );

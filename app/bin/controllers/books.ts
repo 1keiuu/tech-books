@@ -6,7 +6,6 @@ export const createBook = (
   bookSlug: string,
   bookTitle: string,
   genreName?: string,
-  amazonLink?: string,
   dueYear?: string,
   status?: readingStatus
 ) => {
@@ -47,7 +46,6 @@ export const createBook = (
       genre.id,
       bookTitle,
       bookSlug,
-      amazonLink,
       dueYear,
       status
     );

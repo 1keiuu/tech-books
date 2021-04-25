@@ -15,7 +15,6 @@ export const generateBooksJson = (
   genreID: number,
   bookTitle: string,
   bookSlug: string,
-  amazonLink?: string,
   dueYear?: string,
   status?: readingStatus
 ): Book => {
@@ -24,7 +23,6 @@ export const generateBooksJson = (
     genreID: genreID,
     title: bookTitle ? bookTitle : "未設定",
     slug: bookSlug,
-    amazonLink: amazonLink ? amazonLink : "",
     dueYear: dueYear ? dueYear : "2021",
     status: status ? status : "yet",
   };

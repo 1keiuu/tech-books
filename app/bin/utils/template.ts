@@ -3,7 +3,7 @@ export const createCheckBoxText = (obj: Book, genreName: string) => {
   if (obj.status == "done") text = "- [x]";
   else text = "- [ ]";
   const noteLink = `https://github.com/1keiuu/tech-books/tree/main/notes/${genreName}/${obj.slug}`;
-  return `${text} [${obj.title}](${noteLink}) / [amazon](${obj.amazonLink})`;
+  return `${text} [${obj.title}](${noteLink})`;
 };
 
 export const createSubTitle = (title: string) => {
