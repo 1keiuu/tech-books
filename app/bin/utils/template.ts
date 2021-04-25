@@ -9,3 +9,15 @@ export const createCheckBoxText = (obj: Book, genreName: string) => {
 export const createSubTitle = (title: string) => {
   return `**${title}**`;
 };
+
+export const isReading = (book: Book, notePath: string) => {
+  const fs = require("fs");
+  const res = fs.readFileSync(`${notePath}/README.md`);
+  const lineLength = res.toString().split("\n").length;
+  if (lineLength > 5) return true;
+  return false;
+};
+
+export const createReadingImg = () => {
+  return "reading";
+};

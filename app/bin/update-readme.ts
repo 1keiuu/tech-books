@@ -7,7 +7,12 @@ const updateReadme = () => {
   const fs = require("fs");
   const path = require("path");
 
-  const { createCheckBoxText, createSubTitle } = require("./utils/template");
+  const {
+    createCheckBoxText,
+    createSubTitle,
+    isReading,
+    createReadingImg,
+  } = require("./utils/template");
 
   const templatePath = path.resolve(
     __dirname,
@@ -20,8 +25,6 @@ const updateReadme = () => {
   const rootDirPath = path.resolve(__dirname, "../../../");
 
   const genres = fs.readdirSync(baseBookDirPath);
-  console.log(baseBookDirPath);
-  console.log(genres);
   //   FIXME:かなり適当に書いてるのでリファクタ
 
   let textData = templateStr;
@@ -56,7 +59,11 @@ const updateReadme = () => {
       booksText += `${createSubTitle(settings["name"])}\r\r`;
       // targetBooks.forEach((books) => {
       dueYearBooks.forEach((book: Book) => {
-        booksText += `${createCheckBoxText(book, genre)}\r\r`;
+        booksText += `${createCheckBoxText(book, genre)} `;
+        if (isReading(book, `${rootDirPath}/notes/${genre}/${book.slug}`)) {
+          booksText += `${createReadingImg()}`;
+        }
+        booksText += `\r\r`;
         if (!allBooks.includes(book)) allBooks.push(book);
       });
       // });
