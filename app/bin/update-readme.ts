@@ -12,8 +12,7 @@ const updateReadme = () => {
   const {
     createCheckBoxText,
     createSubTitle,
-    isReading,
-    createReadingImg,
+    createStatusImg,
   } = require("./utils/template");
 
   const templatePath = path.resolve(
@@ -61,14 +60,7 @@ const updateReadme = () => {
       // targetBooks.forEach((books) => {
       dueYearBooks.forEach((book: Book) => {
         booksText += `${createCheckBoxText(book, genre.slug)} `;
-        if (
-          isReading(
-            `${rootDirPath}/notes/${genre.slug}/${book.slug}`,
-            book.status
-          )
-        ) {
-          booksText += `${createReadingImg()}`;
-        }
+        booksText += `${createStatusImg(book.status)}`;
         booksText += `\r\r`;
         if (!allBooks.includes(book)) allBooks.push(book);
       });
