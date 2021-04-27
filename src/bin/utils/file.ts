@@ -1,7 +1,7 @@
 export const generateSettingsJson = (
   genreID: number,
-  fileName: string,
-  dirNameJP: string
+  fileName?: string,
+  dirNameJP?: string
 ): GenreSettings => {
   const data = {
     id: genreID,
