@@ -6,14 +6,16 @@ test("function 'generateSettingsJson' returns perfect data.", () => {
     slug: "test",
     name: "テスト",
   };
-  expect(generateSettingsJson(data.id, data.slug, data.name)).toBe(data);
+  expect(generateSettingsJson(data.id, data.slug, data.name)).toStrictEqual(
+    data
+  );
 });
 
 test("function 'generateSettingsJson' returns 'unset' data.", () => {
   const data = {
     id: 1,
   };
-  expect(generateSettingsJson(data.id)).toBe({
+  expect(generateSettingsJson(data.id)).toStrictEqual({
     id: 1,
     slug: "unset",
     name: "未設定",
