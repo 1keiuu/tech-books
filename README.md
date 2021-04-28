@@ -1,4 +1,5 @@
-# 📚 To Read. ![workflow](https://github.com/1keiuu/tech-books/actions/workflows/run-test.yml/badge.svg)
+# 📚 To Read.
+![workflow](https://github.com/1keiuu/tech-books/actions/workflows/run-test.yml/badge.svg)
 
 ## 2021
 **達成率: 0%**
