@@ -128,7 +128,30 @@
     - `no-cache`: キャッシュが有効かどうか毎回サーバーに問い合わせる。304　NotModifiedが帰って来た時のみキャッシュを利用する。max-age=0とほぼ同じ
     - `no-store`: キャッシュしない
     - `immutable`: コンテンツが決して変化しないことを伝える。Chrome非対応。
-
+- Vary
+    - PCで初回アクセス→キャッシュが保存される→2回目はSPでアクセス→SPではデバイス判別が行われず、キャッシュされたPC用HTMLが返されてしまう
+    - ↑はググールのインデックス時にも発生してしまい、SEOにも影響する
+    - Varyヘッダーをつけておけば、pc表示/SP表示が存在し、USerAgentにより切り替わることをブラウザ、クローラーに伝えることができる
+- Referer
+    - ユーザーがどの経路からウェブサイトへ到達したかをサーバーが把握する為に、クライアントがサーバーへ送るヘッダー 
+    - Refererの設定の方法は三通りある
+        - `Referer-Policy`ヘッダー: 
+        - `<meta name="referer" content="設定値"`
+        - `<a>`タグなどいくつかの要素の`refererpolicy`属性及、`rel="noreferer"`属性
+        設定できる値
+            - `no-referer`: 一切送らない
+            - `no-referer-when-downgrade`: デフォルト動作と同じで、HTTPS→HTTPの時は送信しない
+            - `same-origin`: 同一ドメイン内のリンクに対してのみ、リファラーを送信
+            - `origin`: 詳細ページではなく、トップページからリンクされた物としてドメイン名だけを送信
+                ex) amebloから楽天リンクを踏んだ時:`referer: https://ameblo.jp/` 
+                `Referrer Policy: origin`が設定されている為、amebloのどの記事かは分からない
+            - `strict-origin`: originと同じだが、HTTPS→HTTP時には送信しない
+            - `origin-when-crossorigin`: 同じドメイン内ではフルのリファラーを、別ドメインではトップのドメイン名だけ表示
+            - `strict-origin-when-crossorigin`: `origin-when-crossorigin`と同じだが、HTTPS→HTTP時には送信しない
+            - `unsafe-url`: 常に送信
+        - この他に、`Content-Security-Policy`でも設定できる
+            ex) `Content-Security-Policy: referer origin`
+            Content-Security-Policyは数多くのセキュリティに関する設定を一括で変更できるヘッダー
 ## 3章 Go言語によるHTTP/1.0クライアントの実装
 ## 4章 HTTP/1.1のシンタックス:高速化と安全性を求めた拡張
 ## 5章 HTTP/1.1のセマンティクス:広がるのHTTPの用途
