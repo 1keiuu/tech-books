@@ -152,6 +152,7 @@
         - この他に、`Content-Security-Policy`でも設定できる
             ex) `Content-Security-Policy: referer origin`
             Content-Security-Policyは数多くのセキュリティに関する設定を一括で変更できるヘッダー
+            
 ## 3章 Go言語によるHTTP/1.0クライアントの実装
 ## 4章 HTTP/1.1のシンタックス:高速化と安全性を求めた拡張
 ## 5章 HTTP/1.1のセマンティクス:広がるのHTTPの用途

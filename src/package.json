@@ -12,7 +12,8 @@
   "scripts": {
     "test": "jest",
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc"
+    "build": "npm run clean && tsc",
+    "deploy": "./scripts/deploy.sh"
   },
   "keywords": [],
   "author": "",
