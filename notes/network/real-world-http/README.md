@@ -152,9 +152,23 @@
         - この他に、`Content-Security-Policy`でも設定できる
             ex) `Content-Security-Policy: referer origin`
             Content-Security-Policyは数多くのセキュリティに関する設定を一括で変更できるヘッダー
-            
+
 ## 3章 Go言語によるHTTP/1.0クライアントの実装
+- `io/ioutil`
+    - io(ファイルの読み書き)に関するutility
+    - そのうちdeprecatedになり、`io`パッケージと`os`パッケージに分割される
+- http1.0ではbodyに任意のコンテンツを入れてPOSTすることができなかったが、1.1以降ではXMLHttpRequestを用いることで実現した。
+- `multipart/form-data`は`Content-Type`の設定値の一つ
+    - 1回のHTTP通信で、複数のMIMETypeを扱える
+    - formでテキストとファイル同時に送信する時などに使える
+    ```:html
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+    ```
 ## 4章 HTTP/1.1のシンタックス:高速化と安全性を求めた拡張
+- `Keep-Alive`で通信速度が大幅に改善
+    - Keep-Aliveがないと、毎リクエスト毎にTCP/IPがコネクションを張る。
+        - あると、連続したリクエストを同じコネクション上で行う
+        -  HTTP/2ではデフォルトで設定される
 ## 5章 HTTP/1.1のセマンティクス:広がるのHTTPの用途
 ## 6章 Go言語によるHTTP1.1クライアントの実装
 ## 7章 HTTP/2、HTTP/3のシンタックス:プロトコルの再定義
