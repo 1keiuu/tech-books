@@ -5,5 +5,12 @@
     "slug": "how_to_work_program",
     "dueYear": "2022",
     "status": "yet"
+  },
+  {
+    "genreID": 8,
+    "title": "Go言語でつくるインタプリタ",
+    "slug": "go_interpreter",
+    "dueYear": "2021",
+    "status": "reading"
   }
 ]
