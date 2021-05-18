@@ -3,6 +3,13 @@
     "genreID": 6,
     "title": "Kubernetes完全ガイド",
     "slug": "kube-perfect",
+    "dueYear": "2022",
+    "status": "yet"
+  },
+  {
+    "genreID": 6,
+    "title": "Docker/Kubernetes実践コンテナ開発入門",
+    "slug": "docker-kube-nyuumonn",
     "dueYear": "2021",
     "status": "yet"
   }
