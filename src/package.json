@@ -12,7 +12,8 @@
   "scripts": {
     "test": "jest",
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc && npm run add:permission",
+    "add:permission":"chmod 700 dist/bin/create-book.js dist/bin/create-genre.js dist/bin/init-data.js dist/bin/update-readme.js",
     "deploy": "./scripts/deploy.sh"
   },
   "keywords": [],
